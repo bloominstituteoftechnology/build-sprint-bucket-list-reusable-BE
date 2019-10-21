@@ -9,25 +9,25 @@ These are the endpoints available to you:
 
 Users
 
-  POST -- /users/register 
-Returns: object
-Function: Adds a user to the database, returns that user
-Data Structure:
-    username: "" - required
-    password: "" - required
-    email: "" - optional
+POST /users/register
+returns: object
+function: adds user to database
+Data structure:
+  username: "" *required*
+  password: "" *required*
+  email: "" *optional*
 
-POST -- /users/login
-Returns: object
-Function: Returns "login successful" and authorization token
-Data Structure:
-    username: "" - required
-    password: "" - required
-    email: "" - optional
+POST /users/login
+returns: object
+function: verifies user is registered in the database, provides token to allow access to protected material
+Data structure:
+  username: "" *required*
+  password: "" *required*
+  email: "" *optional*
 
-GET -- /users
-Returns: array of objects
-Function: Returns all users
-(will not return unless user is logged in, requires token)
+GET /users
+returns: array
+function: shows list of all users in database
+  
 
 
