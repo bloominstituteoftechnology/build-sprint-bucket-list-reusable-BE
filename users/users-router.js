@@ -4,8 +4,22 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
+const Protected = require('../middleware/protected');
 
-router.post('/', (req, res) =>{
+router.post('/register', (req, res) =>{
+  const user = req.body;
+  const hash = bcrypt.hashSync(user.password, 10)
+  user.password = hash;
+  Users.add(user)
+    .then(user =>{
+      res.status(200).json(user)
+    })
+    .catch(err =>{
+      res.status(500).json({message: "Could not add user"})
+    })
+})
+
+router.post('/login', (req, res) =>{
   let {username, password} = req.body;
     Users.findBy({username})
       .first()
@@ -22,6 +36,16 @@ router.post('/', (req, res) =>{
       .catch(err =>{
         res.status(500).json(err)
       })
+});
+
+router.get('/', Protected, (req, res) =>{
+  Users.find()
+    .then(user =>{
+      res.json({loggedInUser: req.username, user})
+    })
+    .catch(err =>{
+      res.json(err)
+    })
 });
 
 function generateToken(user){
