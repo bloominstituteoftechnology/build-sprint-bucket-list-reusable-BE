@@ -27,7 +27,20 @@ Data structure:
 
 GET /users
 returns: array
-function: shows list of all users in database
-  
+function: shows list of all users in database *must be logged in to view
+
+GET /users/:id
+returns: object
+function: returns specified user by id *must be logged in to view
+
+PUT /users/:id
+returns: object
+function: updates specified user information **NOTE: password cannot be changed! *must be logged in to change
+
+DELETE /users/:id
+returns: object
+function: removes user from database **NOTE: this is irreversible! *must be logged in to remove 
+
+
 
 

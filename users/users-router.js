@@ -48,6 +48,50 @@ router.get('/', Protected, (req, res) =>{
     })
 });
 
+router.get('/:id', Protected, (req, res) =>{
+  Users.findById(req.params.id)
+    .then(user =>{
+      if (user) {
+        res.json(user)
+      } else {
+        res.status(404).json({message: "The user with the specified ID does not exist"})
+      }
+    })
+    .catch(err =>{
+      res.status(500).json({message: "Could not get user"})
+    })
+})
+
+router.put('/:id', Protected, (req, res) =>{
+  Users.update(req.body, req.params.id)
+  .then(user =>{
+    if (user) {
+      res.json(user)
+    } else {
+      res.status(404).json({message: "User with specified ID does not exist"})
+    }
+  })
+  .catch(err =>{
+    res.status(500).json({message: "Could not update user"})
+  })
+})
+
+router.delete('/:id', Protected, (req, res) =>{
+  Users.remove(req.params.id)
+  .then(user =>{
+    if (user) {
+      res.json({message: "User removed"})
+    } else {
+      res.status(404).json({message: "User with specified ID does not exist"})
+    }
+  })
+  .catch(err =>{
+    res.status(500).json({message: "User could not be removed"})
+  })
+})
+
+
+
 function generateToken(user){
   const payload ={
     username: user.username,
