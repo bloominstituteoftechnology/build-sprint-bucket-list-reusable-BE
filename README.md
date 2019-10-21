@@ -42,5 +42,35 @@ returns: object
 function: removes user from database **NOTE: this is irreversible! *must be logged in to remove 
 
 
+Buckets
+
+GET /users/:id/buckets
+returns: array
+function: shows buckets belonging to the specified user (right now it just shows all buckets, but I'll fix that)
+
+POST /users/:id/buckets
+returns: object
+function: adds a new bucket to a specified user
+Data structure:
+  title: "" *required*
+  created_by: "" *optional*
+
+GET /users/:id/buckets/:id
+returns: object
+function: shows the bucket with the specified id
+
+PUT /users/:id/buckets/:id
+returns: object
+function: user can update the bucket information
+Data structure:
+  title: "" *required*
+  created_by: "" *optional*
+
+DELETE /users/:id/buckets/:id
+returns: object
+function: removes bucket from database
+
+
+
 
 
