@@ -1,8 +1,11 @@
 const express = require('express');
 const Users = require('../users/users-model');
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const secrets = require('../config/secrets');
 
-router.post('/api/login', (req, res) =>{
+router.post('/', (req, res) =>{
   let {username, password} = req.body;
     Users.findBy({username})
       .first()
