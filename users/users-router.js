@@ -27,7 +27,6 @@ router.post('/login', (req, res) =>{
         console.log('User info',user);
         if (user && bcrypt.compareSync(password, user.password)){
           const token = generateToken(user);
-          console.log('token', token);
           res.status(200).json({message: `${user.username} is logged in!`,token,})
         } else {
           res.status(400).json({message: "Invalid username or password"})
