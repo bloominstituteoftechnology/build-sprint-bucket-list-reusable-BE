@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const UsersRouter = require('./users/users-router');
 const BucketRouter = require('./buckets/bucket-router');
+const ItemRouter = require('./items/item-router');
 
 const server = express();
 
@@ -14,6 +15,7 @@ server.use(cors());
 
 server.use('/api/users', UsersRouter);
 server.use('/api/buckets', BucketRouter);
+server.use('/api/items', ItemRouter);
 
 
 server.get('/', (req, res) =>{
