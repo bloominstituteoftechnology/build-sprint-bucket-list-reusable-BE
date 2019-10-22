@@ -68,10 +68,43 @@ Data structure:
   created_by: "" *optional*
   user_id: integer *required*
 
-DELETE /users/:id/buckets/:id
+DELETE /buckets/:id
 returns: object
 function: removes bucket from database
 
+Items
+
+GET /items
+returns: array
+function: shows buckets belonging to the specified user (right now it just shows all buckets, but I'll fix that)
+
+POST /items
+returns: object
+function: adds a new bucket to a specified bucket
+Data structure:
+  item_name: "" *required*
+  journal_entry: "" *optional*
+  photo: "" *optional* **NOTE- I don't have it set up for uploads yet, but we can put in strings from unsplash and it works for now.
+  completed: true or false(defaults to false)
+  bucket_id: integer *required*
+
+GET /items/:id
+returns: object
+function: shows the item with the specified id
+
+PUT /items/:id
+returns: object
+function: user can update the item information
+Data structure:
+  item_name: "" *required*
+  journal_entry: "" *optional*
+  photo: "" *optional* **NOTE- I don't have it set up for uploads yet, but we can put in strings from unsplash and it works for now.
+  completed: true or false(defaults to false)
+  bucket_id: integer *required*
+
+DELETE /items/:id
+returns: object
+function: removes item from database
 
 
 
