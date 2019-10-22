@@ -5,7 +5,7 @@ const Protected = require('../middleware/protected');
 
 
 router.get('/', Protected, (req, res) =>{
-  Buckets.find()
+  Buckets.findBy()
     .then(bucket =>{
       res.json(bucket)
     })

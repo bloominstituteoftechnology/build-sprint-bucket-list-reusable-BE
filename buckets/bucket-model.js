@@ -13,8 +13,8 @@ function find() {
   return db('buckets')
 }
 
-function findBy(filter){
-  return db('buckets').where(filter);
+function findBy(user_id){
+  return db('buckets');
 }
 
 function add(bucket) {

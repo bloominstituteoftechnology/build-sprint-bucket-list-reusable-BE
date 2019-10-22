@@ -44,27 +44,29 @@ function: removes user from database **NOTE: this is irreversible! *must be logg
 
 Buckets
 
-GET /users/:id/buckets
+GET /buckets
 returns: array
 function: shows buckets belonging to the specified user (right now it just shows all buckets, but I'll fix that)
 
-POST /users/:id/buckets
+POST /buckets
 returns: object
 function: adds a new bucket to a specified user
 Data structure:
   title: "" *required*
   created_by: "" *optional*
+  user_id: integer *required*
 
-GET /users/:id/buckets/:id
+GET /buckets/:id
 returns: object
 function: shows the bucket with the specified id
 
-PUT /users/:id/buckets/:id
+PUT /buckets/:id
 returns: object
 function: user can update the bucket information
 Data structure:
   title: "" *required*
   created_by: "" *optional*
+  user_id: integer *required*
 
 DELETE /users/:id/buckets/:id
 returns: object
