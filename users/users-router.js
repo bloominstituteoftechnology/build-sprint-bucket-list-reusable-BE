@@ -40,6 +40,7 @@ router.post('/login', (req, res) =>{
 router.get('/', Protected, (req, res) =>{
   Users.find()
     .then(user =>{
+      console.log(user);
       res.json({loggedInUser: req.username, user})
     })
     .catch(err =>{

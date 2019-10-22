@@ -17,6 +17,7 @@ router.get('/', Protected, (req, res) =>{
 router.post('/', Protected, (req, res) =>{
   Buckets.add(req.body)
     .then(bucket =>{
+      console.log(bucket);
       res.status(201).json(bucket)
     })
     .catch(err =>{
