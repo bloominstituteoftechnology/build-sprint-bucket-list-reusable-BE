@@ -14,7 +14,7 @@ router.get('/', Protected, (req, res) =>{
     })
 });
 
-router.post('/', (req, res) =>{
+router.post('/', Protected, (req, res) =>{
   Buckets.add(req.body)
     .then(bucket =>{
       res.status(201).json(bucket)
@@ -24,7 +24,7 @@ router.post('/', (req, res) =>{
     })
 })
 
-router.get('/:id', (req, res) =>{
+router.get('/:id', Protected, (req, res) =>{
   Buckets.findById(req.params.id)
     .then(bucket =>{
       if (bucket) {
@@ -38,7 +38,7 @@ router.get('/:id', (req, res) =>{
     })
 })
 
-router.put('/:id', (req, res) =>{
+router.put('/:id', Protected, (req, res) =>{
   Buckets.update(req.body, req.params.id)
   .then(bucket =>{
     if (bucket) {
@@ -52,7 +52,7 @@ router.put('/:id', (req, res) =>{
   })
 })
 
-router.delete('/:id', (req, res) =>{
+router.delete('/:id', Protected, (req, res) =>{
   Buckets.remove(req.params.id)
   .then(bucket =>{
     if (bucket) {

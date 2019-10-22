@@ -13,7 +13,7 @@ server.use(express.json());
 server.use(cors());
 
 server.use('/api/users', UsersRouter);
-server.use('/api/users/:id/buckets', BucketRouter);
+server.use('/api/buckets', BucketRouter);
 
 
 server.get('/', (req, res) =>{
