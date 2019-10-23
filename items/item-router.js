@@ -4,7 +4,7 @@ const router = express.Router();
 const Protected = require('../middleware/protected');
 
 
-router.get('/', Protected, (req, res) =>{
+router.get('/', (req, res) =>{
   Items.findBy()
     .then(item =>{
       res.json(item)
@@ -14,7 +14,7 @@ router.get('/', Protected, (req, res) =>{
     })
 });
 
-router.post('/', Protected, (req, res) =>{
+router.post('/', (req, res) =>{
   Items.add(req.body)
     .then(item =>{
       res.status(201).json(item)
@@ -24,7 +24,7 @@ router.post('/', Protected, (req, res) =>{
     })
 })
 
-router.get('/:id', Protected, (req, res) =>{
+router.get('/:id', (req, res) =>{
   Items.findById(req.params.id)
     .then(item =>{
       if (item) {
@@ -38,7 +38,7 @@ router.get('/:id', Protected, (req, res) =>{
     })
 })
 
-router.put('/:id', Protected, (req, res) =>{
+router.put('/:id', (req, res) =>{
   Items.update(req.body, req.params.id)
   .then(item =>{
     if (item) {
@@ -52,7 +52,7 @@ router.put('/:id', Protected, (req, res) =>{
   })
 })
 
-router.delete('/:id', Protected, (req, res) =>{
+router.delete('/:id', (req, res) =>{
   Items.remove(req.params.id)
   .then(item =>{
     if (item) {
