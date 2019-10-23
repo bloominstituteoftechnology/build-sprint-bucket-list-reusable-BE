@@ -24,7 +24,9 @@ exports.up = function(knex) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('users');
+      .inTable('users')
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
     })
 
     .createTable("items", tbl =>{
@@ -38,7 +40,9 @@ exports.up = function(knex) {
       .unsigned()
       .notNullable()
       .references('id')
-      .inTable('buckets');
+      .inTable('buckets')
+      .onUpdate("CASCADE")
+      .onDelete("CASCADE");
     }) 
 };
 
