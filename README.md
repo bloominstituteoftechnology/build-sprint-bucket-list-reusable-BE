@@ -2,6 +2,16 @@
 
 Hi guys! Here is some documentation to help you figure out the API
 
+Here are some dummy accounts with stuff in them if you'd like to use them for development:
+
+username: "dummy1"
+password: "dummy1"
+
+username: "dummy2"
+password: "dummy2"
+
+**dummy1 has 2 buckets with 1 item each associated with it, dummy2 has 1 bucket with 1 item**
+
 This is the full url that you will need as a prefix to every request:
     https://bw-bucketlist.herokuapp.com/api
 
