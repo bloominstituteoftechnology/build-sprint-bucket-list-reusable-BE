@@ -1,7 +1,7 @@
 const express = require('express');
 const Buckets = require('./bucket-model');
 const router = express.Router();
-const Protected = require('../middleware/protected');
+const Protected = require('../middleware/restricted');
 
 
 router.get('/', (req, res) =>{

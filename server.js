@@ -19,7 +19,7 @@ server.use('/api/items', ItemRouter);
 
 
 server.get('/', (req, res) =>{
-  res.send("We're connected!")
+  res.status(200).json({message: "We're connected!"})
 });
 
 

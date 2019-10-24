@@ -4,8 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
-const Protected = require('../middleware/protected');
-
+const Restricted = require('../middleware/restricted');
 router.post('/register', (req, res) =>{
   const user = req.body;
   const hash = bcrypt.hashSync(user.password, 10)
@@ -37,7 +36,7 @@ router.post('/login', (req, res) =>{
       })
 });
 
-router.get('/', Protected, (req, res) =>{
+router.get('/', Restricted, (req, res) =>{
   Users.find()
     .then(user =>{
       console.log(user);
@@ -48,7 +47,7 @@ router.get('/', Protected, (req, res) =>{
     })
 });
 
-router.get('/:id', Protected, (req, res) =>{
+router.get('/:id', Restricted, (req, res) =>{
   Users.findById(req.params.id)
     .then(user =>{
       if (user) {
@@ -62,7 +61,7 @@ router.get('/:id', Protected, (req, res) =>{
     })
 })
 
-router.put('/:id', Protected, (req, res) =>{
+router.put('/:id', Restricted, (req, res) =>{
   Users.update(req.body, req.params.id)
   .then(user =>{
     if (user) {
@@ -76,7 +75,7 @@ router.put('/:id', Protected, (req, res) =>{
   })
 })
 
-router.delete('/:id', Protected, (req, res) =>{
+router.delete('/:id', Restricted, (req, res) =>{
   Users.remove(req.params.id)
   .then(user =>{
     if (user) {
