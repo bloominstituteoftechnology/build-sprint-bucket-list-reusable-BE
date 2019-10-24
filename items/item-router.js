@@ -1,7 +1,7 @@
 const express = require('express');
 const Items = require('./item-model');
 const router = express.Router();
-const Protected = require('../middleware/protected');
+const Protected = require('../middleware/restricted');
 
 
 router.get('/', (req, res) =>{

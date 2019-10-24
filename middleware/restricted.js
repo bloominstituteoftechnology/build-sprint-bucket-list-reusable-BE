@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const secrets = require('../config/secrets');
 
-function protected(req, res, next){
+function restricted(req, res, next){
   const token = req.headers.authorization;
 
   if (token) {
@@ -18,4 +18,4 @@ function protected(req, res, next){
   }
 };
 
-module.exports = protected;
+module.exports = restricted;
